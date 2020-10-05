@@ -6,11 +6,13 @@ package cse360assignment02;
 
 public class AddingMachine {
   private int total;
+  private StringBuffer operations;
  /**
   * Constructor of AddingMachine
   */
   public AddingMachine () {
     total = 0;  // not needed - included for clarity
+    operations = new StringBuffer("0");
   }
   
  /**
@@ -18,13 +20,15 @@ public class AddingMachine {
   * @return total of calculations
   */
   public int getTotal () {
-    return 0;
+    return total;
   }
  /**
   * Adds a value to the total
   * @param number that will be added 
   */
   public void add (int value) {
+	  total += value;
+	  operations.append(" + " + value);
   }
   
  /**
@@ -32,6 +36,8 @@ public class AddingMachine {
   * @param number that will be subtracted 
   */
   public void subtract (int value) {
+	  total -= value;
+	  operations.append(" - " + value);
   }
 
  /**
@@ -39,12 +45,14 @@ public class AddingMachine {
   * @return returns the result of operations and every operation
   */
   public String toString () {
-    return "";
+    return operations.toString() + " = " + getTotal();
   }
 
  /**
   * Resets the total and operation string
   */
   public void clear() {
+	  total = 0;
+	  operations.delete(0, operations.length());
   }
 }
